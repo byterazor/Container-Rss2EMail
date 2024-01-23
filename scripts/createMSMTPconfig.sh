@@ -45,7 +45,7 @@ else
 fi
 
 if [ -z $XDG_CONFIG_HOME ]; then
-    XDG_CONFIG_HOME=/home/rssemail/.config
+    XDG_CONFIG_HOME=/home/rss2email/.config
 fi
 
 mkdir -p $XDG_CONFIG_HOME/msmtp/
