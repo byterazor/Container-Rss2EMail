@@ -14,6 +14,7 @@ if [ -z ${FEEDS} ]; then
 fi
 
 
-echo -e ${FEEDS} > ~/.rss2email/feeds.txt
+
+echo -e ${FEEDS} > /home/rss2email/.rss2email/feeds.txt
 
 /app/rss2email daemon ${RECIPIENTS}
