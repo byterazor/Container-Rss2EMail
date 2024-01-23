@@ -44,7 +44,12 @@ else
     MSMTP_SMTP_PASS="dummy"
 fi
 
-cat > /etc/msmtprc <<EOF
+if [ -z $XDG_CONFIG_HOME ]; then
+    XDG_CONFIG_HOME=/home/rssemail/.config
+fi
+
+mkdir -p $XDG_CONFIG_HOME/msmtp/
+cat > $XDG_CONFIG_HOME/msmtp/config <<EOF
 defaults
 auth ${MSMTP_SMTP_AUTH}
 tls ${MSMTP_SMTP_TLS}
@@ -57,10 +62,3 @@ from ${MSMTP_SMTP_FROM}
 user ${MSMTP_SMTP_USER}
 password ${MSMTP_SMTP_PASS}
 EOF
-
-chmod 600 /etc/msmtprc
-
-
-# we use msmtp as a dropin replacement for sendmail
-rm /usr/sbin/sendmail
-ln -s /usr/bin/msmtp /usr/sbin/sendmail

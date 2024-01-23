@@ -29,4 +29,19 @@ ADD scripts/entryPoint.sh /entryPoint.sh
 RUN chmod +x /entryPoint.sh
 RUN chmod +x /createMSMTPconfig.sh
 
+# we use msmtp as a dropin replacement for sendmail
+RUN rm /usr/sbin/sendmail
+RUN ln -s /usr/bin/msmtp /usr/sbin/sendmail
+
+# add a user for running rss2email in the container
+RUN addgroup rss2email && adduser -D -G rss2email rss2email
+
+RUN mkdir -p /home/rss2email/.rss2email/
+
+# ensure a homedirectory for the user exists and has correct access rights
+RUN mkdir -p /home/rss2email && chown rss2email.rss2email /home/rss2email
+
+# run everything as the rss2email user
+USER rss2email
+
 ENTRYPOINT ["/sbin/tini", "--", "/entryPoint.sh"]

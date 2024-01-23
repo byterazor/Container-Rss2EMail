@@ -13,7 +13,7 @@ if [ -z ${FEEDS} ]; then
     exit 255
 fi
 
-mkdir -p ~/.rss2email/
-echo ${FEEDS} > ~/.rss2email/feeds.txt
+
+echo -e ${FEEDS} > ~/.rss2email/feeds.txt
 
 /app/rss2email daemon ${RECIPIENTS}
