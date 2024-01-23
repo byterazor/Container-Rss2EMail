@@ -62,3 +62,5 @@ from ${MSMTP_SMTP_FROM}
 user ${MSMTP_SMTP_USER}
 password ${MSMTP_SMTP_PASS}
 EOF
+
+chmod 600 $XDG_CONFIG_HOME/msmtp/config
