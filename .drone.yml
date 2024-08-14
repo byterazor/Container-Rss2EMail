@@ -87,6 +87,15 @@ steps:
       - buildah login -u $${USERNAME} -p $${PASSWORD} registry.hub.docker.com
       - buildah manifest push --all rss2email:latest docker://registry.hub.docker.com/byterazor/rss2email:latest
       - buildah manifest rm rss2email:latest
+  - name: push readme
+    image: byterazor/drone-docker-readme-push:latest
+    settings:
+      REPOSITORY_NAME: byterazor/rss2email
+      FILENAME: README.md
+      USERNAME: 
+        from_secret: username
+      PASSWORD: 
+        from_secret: password
 depends_on:
   - build-amd64
   - build-arm64
