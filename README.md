@@ -45,6 +45,21 @@ Replace `<registry>` with the name of your Docker registry and `<username>` with
 
 The configuration of rss2email is done via environment variables. You can specify these on the Docker run command line with the `-e` option or define them in an environment variable file and specify that with the `--env-file` option.
 
+- `FEEDS` - A list of rssfeed seperated by \n (newline). 
+- `RECIPIENTS` - space separated email addresses to send the emails to
+
+## Source Repository
+
+* https://gitea.federationhq.de/Container/rss2email
+
+## Prebuild Images
+
+* https://hub.docker.com/repository/docker/byterazor/rss2email/general
+
+## Authors
+
+* **Dominik Meyer** - *Initial work* 
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
