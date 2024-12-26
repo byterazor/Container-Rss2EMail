@@ -39,7 +39,9 @@ RUN addgroup rss2email && adduser -D -G rss2email rss2email
 RUN mkdir -p /home/rss2email/.rss2email/
 
 # ensure a homedirectory for the user exists and has correct access rights
-RUN mkdir -p /home/rss2email && chown rss2email.rss2email /home/rss2email
+RUN mkdir -p /home/rss2email  
+RUN chown rss2email /home/rss2email
+RUN chgrp rss2email /home/rss2email
 
 # run everything as the rss2email user
 USER rss2email
